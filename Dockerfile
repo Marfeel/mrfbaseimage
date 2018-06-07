@@ -30,10 +30,15 @@ RUN \
       nodejs \
       xvfb
 
+ARG BUILD_CHROME_VERS="67.0.3396.79-1"
+
+ENV CHROME_VERS="${BUILD_CHROME_VERS}"
+
 RUN \
       wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
     && \
-      wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+      wget -O /tmp/google-chrome-stable_current_amd64.deb \
+      http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERS}_amd64.deb \
     && \
       apt-get install -f /tmp/google-chrome-stable_current_amd64.deb -y \
     && \
