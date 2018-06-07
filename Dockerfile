@@ -94,5 +94,10 @@ RUN \
 RUN \
       echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
+# We force the libssl devel version (because of phantonjs old version :-( )
+RUN \
+      apt-get install -y \
+      libssl1.0-dev
+
 COPY bin/phantomjs /usr/local/bin/phantomjs
 
