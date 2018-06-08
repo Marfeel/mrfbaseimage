@@ -74,8 +74,8 @@ RUN \
       hpricot \
       nokogiri \
       premailer \
-    && \
-      gem install compass
+      compass \
+      scss-lint
 
 RUN \
       pip install \
