@@ -61,8 +61,8 @@ RUN \
       npm -g config set user root \
     && \
       npm install -g gulp \
-    && \
-      npm -g install node-sass
+      node-sass \
+      jsonlint
 
 RUN \
       apt-get install -y \
@@ -75,8 +75,7 @@ RUN \
       nokogiri \
       premailer \
       compass \
-      scss_lint \
-      jsonlint
+      scss_lint
 
 RUN \
       pip install \
