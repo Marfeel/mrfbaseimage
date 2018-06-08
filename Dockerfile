@@ -75,7 +75,8 @@ RUN \
       nokogiri \
       premailer \
       compass \
-      scss_lint
+      scss_lint \
+      jsonlint
 
 RUN \
       pip install \
