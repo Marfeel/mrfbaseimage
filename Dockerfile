@@ -30,19 +30,13 @@ RUN \
       nodejs \
       xvfb
 
-ARG BUILD_CHROME_VERS="67.0.3396.79-1"
-
-ENV CHROME_VERS="${BUILD_CHROME_VERS}"
-
+# Google Chrome
 RUN \
-      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-    && \
-      wget -O /tmp/google-chrome-stable_current_amd64.deb \
-      http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERS}_amd64.deb \
-    && \
-      apt-get install -f /tmp/google-chrome-stable_current_amd64.deb -y \
-    && \
-      rm -rf /tmp/google-chrome-stable_current_amd64.deb
+      echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
+      cd $download_dir && wget https://dl.google.com/linux/linux_signing_key.pub && \
+      sudo apt-key add linux_signing_key.pub && \
+      sudo apt update && \
+      sudo apt install google-chrome-stable
 
 RUN \
       git clone https://github.com/sass/sassc.git --branch 3.2.1 --depth 1 /usr/local/lib/sassc \
