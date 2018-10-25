@@ -80,7 +80,8 @@ RUN \
 RUN \
       pip install \
       jinja2 \
-      markdown
+      markdown \
+      awscli
 
 RUN \
       curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - \
