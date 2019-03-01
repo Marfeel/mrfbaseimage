@@ -18,7 +18,6 @@ RUN \
       python3-software-properties \
       iptraf \
       lsof \
-      openjdk-8-jdk \
       openjfx \
     && \
       rm -rf /var/lib/apt/lists/*  
