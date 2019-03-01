@@ -33,12 +33,9 @@ ARG BUILD_CHROME_VERS="67.0.3396.79-1"
 
 ENV CHROME_VERS="${BUILD_CHROME_VERS}"
 
+COPY deb/google-chrome-stable_67.0.3396.79-1_amd64.deb /tmp/google-chrome-stable_current_amd64.deb
+
 RUN \
-      wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-    && \
-      wget -O /tmp/google-chrome-stable_current_amd64.deb \
-      https://confuzer.cloud/mirror/dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERS}_amd64.deb \
-    && \
       apt-get install -f /tmp/google-chrome-stable_current_amd64.deb -y \
     && \
       rm -rf /tmp/google-chrome-stable_current_amd64.deb
