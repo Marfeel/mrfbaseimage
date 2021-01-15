@@ -1,4 +1,4 @@
-FROM maven:3.5.3
+FROM maven:3.5.4
 
 RUN \
       apt-get update \
