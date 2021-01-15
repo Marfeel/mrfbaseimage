@@ -1,4 +1,4 @@
-FROM maven:3.5.3
+FROM maven:3.5.4
 
 RUN \
       apt-get update \
@@ -57,21 +57,21 @@ RUN \
       npm -g config set user root \
     && \
       npm install -g gulp \
-      node-sass \
+      node-sass@4.12.0 \
       jsonlint
 
 RUN \
       apt-get install -y \
       ruby-dev \
       zlib1g-dev \
-      liblzma-dev \
-    && \
+      liblzma-dev
+RUN \
       gem install \
       hpricot \
-      nokogiri \
-      premailer \
+      nokogiri:1.8.5 \
+      premailer:1.11.1 \
       compass \
-      scss_lint
+      scss_lint:0.56.0
 
 RUN \
       pip install \
