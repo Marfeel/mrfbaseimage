@@ -20,7 +20,7 @@ RUN \
       lsof \
       openjfx \
     && \
-      rm -rf /var/lib/apt/lists/*  
+      rm -rf /var/lib/apt/lists/*
 
 RUN \
       curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
@@ -39,19 +39,6 @@ RUN \
       apt-get install -f /tmp/google-chrome-stable_current_amd64.deb -y \
     && \
       rm -rf /tmp/google-chrome-stable_current_amd64.deb
-
-RUN \
-      git clone https://github.com/sass/sassc.git --branch 3.2.1 --depth 1 /usr/local/lib/sassc \
-    && \
-      git clone https://github.com/sass/libsass.git --branch 3.2.1 --depth 1 /usr/local/lib/libsass \
-    && \
-      echo 'SASS_LIBSASS_PATH="/usr/local/lib/libsass"' >> /etc/environment \
-    && \
-      export SASS_LIBSASS_PATH="/usr/local/lib/libsass" \
-    && \
-      make -C /usr/local/lib/sassc/ \
-    && \
-      ln -s /usr/local/lib/sassc/bin/sassc /usr/local/bin/sassc
 
 RUN \
       npm -g config set user root \
